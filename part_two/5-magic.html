@@ -13551,7 +13551,26 @@ Length(5.593613298337708, 'yd')
 <div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">+=</span> <span class="n">Length</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">x</span> <span class="o">+=</span> <span class="n">Length</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;yd&quot;</span><span class="p">)</span>
 </pre></div>
-<p>We have added 1 metre in the example above by writing "x += Length(1))". Most certainly, you will agree with us that it would be more convenient to simply write "x += 1" instead. We also want to treat expressions like "Length(5,"yd") + 4.8" similarly. So, if somebody uses a type int or float, our class takes it automatically for "metre" and converts it into a Length object. It's easy to adapt our <strong>add</strong> and "<strong>iadd</strong>" method for this task. All we have to do is to check the type of the parameter "other":</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We have added 1 metre in the example above by writing <code>x += Length(1))</code>.</p>
+<p>Most certainly, you will agree with us that it would be more convenient to simply write <code>x += 1</code> instead.</p>
+<p>We also want to treat expressions like <code>Length(5,"yd") + 4.8</code> similarly.</p>
+<p>So, if somebody uses a type <code>int</code> or <code>float</code>, our class takes it automatically for "metre" and converts it into a <code>Length</code> object.</p>
+<p>It's easy to adapt our <code>__add__</code> and <code>__iadd__</code> method for this task.</p>
+<p>All we have to do is to check the type of the parameter "other":</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="ow">or</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="o">==</span> <span class="nb">float</span><span class="p">:</span>
             <span class="n">l</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Converse2Metres</span><span class="p">()</span> <span class="o">+</span> <span class="n">other</span>
@@ -13567,7 +13586,21 @@ Length(5.593613298337708, 'yd')
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">l</span> <span class="o">/</span> <span class="n">Length</span><span class="o">.</span><span class="n">__metric</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="p">]</span>
         <span class="k">return</span> <span class="bp">self</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>It's a safe bet that if somebody works for a while with adding integers and floats from the right sight that he or she wants to the same from the left side! So let's try it out:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">unit_conversions</span> <span class="kn">import</span> <span class="n">Length</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">Length</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;yd&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">+</span> <span class="n">Length</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;yd&quot;</span><span class="p">)</span>
@@ -13576,8 +13609,33 @@ Length(5.593613298337708, 'yd')
 <span class="ne">TypeError</span><span class="p">:</span> <span class="n">unsupported</span> <span class="n">operand</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="o">+</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span> <span class="ow">and</span> <span class="s1">&#39;Length&#39;</span>
 <span class="o">&gt;&gt;&gt;</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Of course, the left side has to be of type "Length", because otherwise Python tries to apply the <strong>add</strong> method from int, which can't cope with Length objects as second arguments!</p>
-<p>Python provides a solution for this problem as well. It's the <strong>radd</strong> method. It works like this: Python tries to evaluate the expression "5 + Length(3, 'yd')". First it calls int.<strong>add</strong>(5,Length(3, 'yd')), which will raise an exception. After this it will try to invoke Length.<strong>radd</strong>(Length(3, "yd"), 5). It's easy to recognize that the implementation of <strong>radd</strong> is analogue to <strong>add</strong>:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Python provides a solution for this problem as well. It's the <code>__radd__</code> method.</p>
+<p>It works like this: Python tries to evaluate the expression <code>5 + Length(3, 'yd')</code>.</p>
+<p>First it calls <code>int.__add__(5,Length(3, 'yd'))</code>, which will raise an exception.</p>
+<p>After this it will try to invoke <code>Length.__radd__(Length(3, "yd"), 5)</code>.</p>
+<p>It's easy to recognize that the implementation of <code>__radd__</code> is analogue to <code>__add__</code>:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="ow">or</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="o">==</span> <span class="nb">float</span><span class="p">:</span>
             <span class="n">l</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Converse2Metres</span><span class="p">()</span> <span class="o">+</span> <span class="n">otherLength</span><span class="o">.</span><span class="fm">__radd__</span><span class="p">(</span><span class="n">Length</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;yd&quot;</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span>
@@ -13586,11 +13644,25 @@ Length(5.593613298337708, 'yd')
         <span class="k">return</span> <span class="n">Length</span><span class="p">(</span><span class="n">l</span> <span class="o">/</span> <span class="n">Length</span><span class="o">.</span><span class="n">__metric</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="p">)</span>
 <span class="err">`</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>It's advisable to make use of the <strong>add</strong> method in the <strong>radd</strong> method:</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">Length</span><span class="o">.</span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">)</span>
 </pre></div>
-<p>The following diagram illustrates the relationship between <strong>add</strong> and <strong>radd</strong>:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The following diagram illustrates the relationship between <code>__add__</code> and <code>__radd__</code>:</p>
 
 </div>
 </div>
@@ -13606,7 +13678,33 @@ Length(5.593613298337708, 'yd')
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="The-call-method">The <strong>call</strong> method<a class="anchor-link" href="#The-call-method">&#182;</a></h3><p>The <strong>call</strong> method can be used to turn the instances of the class into callables. Functions are callable objects. A callable object is an object which can be used and behaves like a function but might not be a function. By using the <strong>call</strong> method it is possible to define classes in a way that the instances will be callable objects. The <strong>call</strong> method is called, if the instance is called "like a function", i.e. using brackets. The following example defines a class with which we can create abitrary polynomial functions:</p>
+<h2 id="The-__call__-method">The <code>__call__</code> method<a class="anchor-link" href="#The-__call__-method">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <strong>call</strong> method can be used to turn the instances of the class into callables.</p>
+<p>Functions are callable objects.</p>
+<p>A <strong>callable object</strong> is an object which can be used and behaves like a function but might not be a function.</p>
+<p>By using the <code>__call__</code> method it is possible to define classes in a way that the instances will be callable objects.</p>
+<p>The <code>__call__</code> method is called, if the instance is called "like a function", i.e. using brackets.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The following example defines a class with which we can create abitrary polynomial functions:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Polynomial</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">coefficients</span><span class="p">):</span>
@@ -13629,6 +13727,13 @@ Length(5.593613298337708, 'yd')
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">p1</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">p2</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">p3</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>These are the results of the previous function:</p>
 
 <pre><code>1 42 2.75 3.25
@@ -13640,9 +13745,22 @@ Length(5.593613298337708, 'yd')
 7 42 7.25 325.75
 8 42 8.0 488.0
 9 42 8.75 697.25</code></pre>
-<p>You will find further interesting examples of the <strong>call</strong> function in our tutorial in the chapters Decorators and Memoization with Decorators. You may also consult our chapter on Polynomials</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Standard Classes as Base Classes
 It's possible to use standard classes - like int, float, dict or lists - as base classes as well.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>We extend the list class by adding a push method:</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Plist</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
 
@@ -13658,12 +13776,6 @@ It's possible to use standard classes - like int, float, dict or lists - as base
     <span class="n">x</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">47</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
-<p>This means that all the previously introduced binary and extended assignment operators exist in the "reversed" version as well:
-<strong>radd</strong>
-<strong>rsub</strong>
-<strong>rmul</strong>
-...
-and so on</p>
 
 </div>
 </div>
@@ -13671,7 +13783,29 @@ and so on</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Exercises">Exercises<a class="anchor-link" href="#Exercises">&#182;</a></h3><h4 id="1.">1.<a class="anchor-link" href="#1.">&#182;</a></h4><p>Canadian money Write a class with the name Ccy, similar to the previously defined Length class.</p>
+<p>This means that all the previously introduced binary and extended assignment operators exist in the "reversed" version as well:</p>
+<ul>
+<li><code>__radd__</code></li>
+<li><code>__rsub__</code></li>
+<li><code>__rmul__</code></li>
+<li>...</li>
+</ul>
+<p>and so on</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Exercises">Exercises<a class="anchor-link" href="#Exercises">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="1.">1.<a class="anchor-link" href="#1.">&#182;</a></h4><p>Canadian money Write a class with the name Ccy, similar to the previously defined Length class.</p>
 <p>Ccy should contain values in various currencies, e.g. "EUR", "GBP" or "USD". An instance should contain the amount and the currency unit.</p>
 <p>The class, you are going to design as an excercise, might be best described with the following example session:</p>
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">currencies</span> <span class="kn">import</span> <span class="n">Ccy</span>
@@ -13727,6 +13861,13 @@ I stole this example.
             <span class="k">for</span> <span class="n">rank</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranks</span>
         <span class="p">]</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Bonus-exercise:-Polynomial-class">Bonus exercise: Polynomial class<a class="anchor-link" href="#Bonus-exercise:-Polynomial-class">&#182;</a></h4><p>Create a class that represents polynomials.  You may need to stretch your memory back to high school maths!
 A polynomial loks like
     2(xx) - x + 7
