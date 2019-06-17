@@ -13116,7 +13116,21 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Iterables,-iterators-and-generators">Iterables, iterators and generators<a class="anchor-link" href="#Iterables,-iterators-and-generators">&#182;</a></h1><p>So far we have used for loops with many different kinds of things.</p>
+<h1 id="Iterables,-iterators-and-generators">Iterables, iterators and generators<a class="anchor-link" href="#Iterables,-iterators-and-generators">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So far we have used for loops with many different kinds of things.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;theelous3&#39;</span><span class="p">,</span> <span class="s1">&#39;RubyPinch&#39;</span><span class="p">,</span> <span class="s1">&#39;go|dfish&#39;</span><span class="p">]:</span>
 <span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 <span class="o">...</span>
@@ -13131,6 +13145,13 @@ div#notebook {
 <span class="n">c</span>
 <span class="o">&gt;&gt;&gt;</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>For looping over something is one way to <strong>iterate</strong> over it.</p>
 <p>Some other things also iterate, for example, <code>' '.join(['a', 'b', 'c'])</code> iterates
 over the list <code>['a', 'b', 'c']</code>.</p>
@@ -13256,7 +13277,7 @@ of the sequence, without creating a new iterator object.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p><strong>Question</strong>: Any idea for that? What is an example of and iterables that is <strong>not</strong> an iterator?</p>
+<blockquote><p><strong>Question</strong>: Any idea for that? What is an example of an iterables that is <strong>not</strong> an iterator?</p>
 </blockquote>
 
 </div>
@@ -13277,6 +13298,13 @@ moves the iterator forward.</p>
 <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>There's also a built-in <code>next()</code> function that does the same thing:</p>
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">e</span> <span class="o">=</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">next</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>

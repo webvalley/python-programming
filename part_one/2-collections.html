@@ -13585,14 +13585,6 @@ of the current element, the <strong>Pythonic</strong> way to do it is to leverag
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The index always starts at 0, so in this example the value of <em>place</em> should actually be the current index, plus one:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="List-Operations">List Operations<a class="anchor-link" href="#List-Operations">&#182;</a></h2>
 </div>
 </div>
@@ -13948,29 +13940,43 @@ so <code>join</code> puts a space between words. To concatenate strings without 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Deques">Deques<a class="anchor-link" href="#Deques">&#182;</a></h2><p>To understand deques, we need to first learn about a list method I
-haven't talked about earlier. It's called <code>pop</code> and it works like this:</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;wub_wub&#39;</span><span class="p">,</span> <span class="s1">&#39;theelous3&#39;</span><span class="p">,</span> <span class="s1">&#39;Nitori&#39;</span><span class="p">,</span> <span class="s1">&#39;RubyPinch&#39;</span><span class="p">,</span> <span class="s1">&#39;go|dfish&#39;</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span>
-<span class="p">[</span><span class="s1">&#39;wub_wub&#39;</span><span class="p">,</span> <span class="s1">&#39;theelous3&#39;</span><span class="p">,</span> <span class="s1">&#39;Nitori&#39;</span><span class="p">,</span> <span class="s1">&#39;RubyPinch&#39;</span><span class="p">,</span> <span class="s1">&#39;go|dfish&#39;</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-<span class="s1">&#39;go|dfish&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span>
-<span class="p">[</span><span class="s1">&#39;wub_wub&#39;</span><span class="p">,</span> <span class="s1">&#39;theelous3&#39;</span><span class="p">,</span> <span class="s1">&#39;Nitori&#39;</span><span class="p">,</span> <span class="s1">&#39;RubyPinch&#39;</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-<span class="s1">&#39;RubyPinch&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span>
-<span class="p">[</span><span class="s1">&#39;wub_wub&#39;</span><span class="p">,</span> <span class="s1">&#39;theelous3&#39;</span><span class="p">,</span> <span class="s1">&#39;Nitori&#39;</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span>
-</pre></div>
+<h2 id="Deques">Deques<a class="anchor-link" href="#Deques">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>The list shortens from the end by one when we pop from it, and we also
 get the removed item back. So we can add an item to the end of a list
 using <code>append</code>, and we can remove an item from the end using <code>pop</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>It's also possible to do these things in the beginning of a list, but
 lists were not designed to be used that way and it would be slow if our
-list would be big. The <code>collections.deque</code> class makes appending and
+list would be big.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <code>collections.deque</code> class makes appending and
 popping from both ends easy and fast. It works just like lists, but it
 also has <code>appendleft</code> and <code>popleft</code> methods.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">names</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">deque</span><span class="p">([</span><span class="s1">&#39;theelous3&#39;</span><span class="p">,</span> <span class="s1">&#39;Nitori&#39;</span><span class="p">,</span> <span class="s1">&#39;RubyPinch&#39;</span><span class="p">])</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">names</span>
 <span class="n">deque</span><span class="p">([</span><span class="s1">&#39;theelous3&#39;</span><span class="p">,</span> <span class="s1">&#39;Nitori&#39;</span><span class="p">,</span> <span class="s1">&#39;RubyPinch&#39;</span><span class="p">])</span>
@@ -13986,6 +13992,13 @@ also has <code>appendleft</code> and <code>popleft</code> methods.</p>
 <span class="n">deque</span><span class="p">([</span><span class="s1">&#39;theelous3&#39;</span><span class="p">,</span> <span class="s1">&#39;Nitori&#39;</span><span class="p">,</span> <span class="s1">&#39;RubyPinch&#39;</span><span class="p">])</span>
 <span class="o">&gt;&gt;&gt;</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>The deque behaves a lot like lists do, and we can do <code>list(names)</code> if we
 need a list instead of a deque for some reason.</p>
 <p>Deques are often used as queues. It means that items are always added to
@@ -14121,6 +14134,7 @@ AttributeError: 'tuple' object has no attribute 'append'</code></pre>
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">t</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="mi">1</span><span class="p">,</span> <span class="mi">99</span>
 </pre></div>
 
 </div>
@@ -14210,6 +14224,14 @@ index:  6  value:  12
 index:  7  value:  14
 index:  8  value:  16
 index:  9  value:  18</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
 
 </div>
 </div>
