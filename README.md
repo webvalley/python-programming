@@ -60,8 +60,9 @@ structures.
 ### Part II: Classes and OOP
 
 1. [Classes and OOP](part_two/1-classes.html)
-2. [Python Data Model](part_two/2-data-model.html)
-3. [Function as Objects](part_two/3-functions-objects.html)
-4. [Magic Methods](part_two/4-magic.html)
-5. [Exceptions](part_two/5-exceptions.html)
+2. [Modules](part_two/modules.html)
+2. [Python Data Model](part_two/3-data-model.html)
+3. [Function as Objects](part_two/4-functions-objects.html)
+4. [Magic Methods](part_two/5-magic.html)
+5. [Exceptions](part_two/6-exceptions.html)
 6. [(Extra) Pythonic Coding Style](part_two/extra-pep8.html)
